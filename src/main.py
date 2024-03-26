@@ -5,7 +5,7 @@ from organizer import organize_files
 from dataclasses import dataclass
 
 
-# TODO check on every downloads folder update/1h time period
+# tod0 check on every downloads folder update/1h time period
 
 
 @dataclass
