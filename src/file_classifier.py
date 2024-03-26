@@ -1,4 +1,5 @@
-def classify_file(files):
-    # Implement logic to classify files
-    # Return a dictionary or similar structure categorizing files
+from Classes import FileMetadata
+
+def classify_file(files) -> FileMetadata:
+
     pass
