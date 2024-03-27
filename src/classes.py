@@ -74,7 +74,7 @@ class FileHandler:
 			"Archives": ["ZIP", "RAR"]
 		}
 
-	def implement_subdirs(self, path_to_core_dir: str):
+	def implement_subdirs(self, path_to_core_dir: str) -> None:
 		for core_dir in self.core_dirs.keys():
 			if core_dir in path_to_core_dir and core_dir != "To_Review":
 				items = os.listdir(path_to_core_dir)
@@ -83,7 +83,7 @@ class FileHandler:
 
 				break
 
-	def impl_subdir_helper(self, core_dir, subdirs, path_to_core_dir):
+	def impl_subdir_helper(self, core_dir, subdirs, path_to_core_dir) -> None:
 		for subdir_to_implement in self.core_dirs[core_dir]:
 			if subdir_to_implement not in subdirs:
 				try:
