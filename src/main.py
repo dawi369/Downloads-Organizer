@@ -17,9 +17,6 @@ def main():
 	DownloadsFolder.list_files()
 
 
-
-
-
 if __name__ == "__main__":
 	main()
 

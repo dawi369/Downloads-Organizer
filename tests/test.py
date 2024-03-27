@@ -1,9 +1,11 @@
 import unittest
 
+# from ..src.main import *
 from ..src.Classes import *
 
 
-
+# from ..src.file_classifier import *
+# from ..src.organizer import *
 
 
 class TestAddFunction(unittest.TestCase):
@@ -18,6 +20,7 @@ class TestAddFunction(unittest.TestCase):
 		my_file = FileMetadata("text.exe", 1000, "21-03-24 11:11", "txt")
 		DownloadsFolder.add_file(my_file)
 		self.assertEqual(DownloadsFolder.files[0], my_file)
+
 
 if __name__ == '__main__':
 	unittest.main()

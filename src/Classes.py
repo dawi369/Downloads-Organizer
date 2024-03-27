@@ -5,7 +5,7 @@ from dataclasses import dataclass, field
 @dataclass
 class FileMetadata:
 	name: str
-	sizeKB: int
+	size_kb: int
 	creation_date: str
 	file_type: str
 
@@ -30,7 +30,7 @@ class DownloadsFolderClass:
 	def list_files(self) -> None:
 		"""Prints a summary of all files in the folder."""
 		for file in self.files:
-			print(f"{file.name}, {file.sizeKB} kilobytes, Created on {file.creation_date}, Type: {file.file_type}")
+			print(f"{file.name}, {file.size_kb} kilobytes, Created on {file.creation_date}, Type: {file.file_type}")
 
 	def find_file(self, name: str) -> FileMetadata | None:
 		"""Finds and returns a file by name."""

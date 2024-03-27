@@ -1,5 +1,5 @@
-from Classes import FileMetadata
+from Classes import *
+
 
 def classify_file(files) -> FileMetadata:
-
-    pass
+	pass
