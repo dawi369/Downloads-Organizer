@@ -4,17 +4,21 @@ from dataclasses import dataclass, field
 
 @dataclass
 class FileMetadata:
-	name: str
+	name: str  # include extension in name?
 	size_kb: int
-	creation_date: str
+	creation_date: str  # maybe last edited
 	file_type: str
 
 
 @dataclass
 class DownloadsFolderClass:
+	"""
+	This is a Singleton class, the custom __new__ method ensures there will only ever be one instance of this class,
+	as well as assigning the path of the downloads folder for the user
+	"""
 	_instance = None
-	files: list[FileMetadata] = field(default_factory=list)
 	downloads_path = None
+	files: list[FileMetadata] = field(default_factory=list)
 
 	def __new__(cls, *args, **kwargs):
 		downloads_path = os.path.join(os.path.expanduser('~'), 'Downloads')

@@ -5,7 +5,7 @@ from file_classifier import classify_file
 from organizer import organize_files
 
 
-# tod0 check on every downloads folder update/1h time period
+# TODO check on every downloads folder update/1h time period
 
 
 def main():
