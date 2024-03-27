@@ -18,7 +18,7 @@ class TestAddFunction(unittest.TestCase):
 
 	def test_adding_file(self):
 		DownloadsFolder = DownloadsFolderClass()
-		my_file = FileMetadata("text.exe", 1000, "21-03-24 11:11", "now ig", "txt")
+		my_file = FileMetadata("text.exe", 1000, "21-03-24 11:11", "now ig", "txt", Path("some path"))
 		DownloadsFolder.add_file(my_file)
 		self.assertEqual(DownloadsFolder.files[0], my_file)
 

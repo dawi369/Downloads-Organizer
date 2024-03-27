@@ -14,8 +14,6 @@ def main():
 
 	FileHandler.gather_files(DownloadsFolder)
 
-	DownloadsFolder.list_files()
-
 
 
 

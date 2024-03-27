@@ -35,11 +35,22 @@ class DownloadsFolderClass:
 		"""Adds a new file to the folder."""
 		self.files.append(file_metadata)
 
-	def list_files(self) -> None:
+	def list_files_big(self) -> None:
 		"""Prints a summary of all files in the folder."""
 		for file in self.files:
 			print(
 				f"{file.name}, {file.size_kb} kilobytes, Created on {file.creation_date}, Last modified on {file.last_edited}, Type: {file.file_type}, Located at {file.full_path}")
+
+	def list_files_small(self) -> None:
+		"""Prints a summary of all files in the folder."""
+		for file in self.files:
+			print(f"{file.name}")
+
+	def list_directories(self) -> None:
+		"""Prints a summary of all directories in the folder."""
+		for file in self.files:
+			if file.file_type == "":
+				print(f"{file.name}")
 
 	def find_file(self, name: str) -> FileMetadata | None:
 		"""Finds and returns a file by name."""
@@ -64,12 +75,7 @@ class FileHandler:
 
 	@staticmethod
 	def gather_files(main: DownloadsFolderClass):
-
 		for entry in os.listdir(main.downloads_path):
 			entry_path = os.path.join(main.downloads_path, entry)
 			entry_metadata = FileHandler.get_file_metadata(entry_path)
 			main.add_file(entry_metadata)
-
-
-
-
