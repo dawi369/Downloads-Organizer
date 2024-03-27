@@ -14,7 +14,7 @@ class FileMetadata:
 class DownloadsFolderClass:
 	"""
 	This is a Singleton class, the custom __new__ method ensures there will only ever be one instance of this class,
-	as well as assigning the path of the downloads folder for the user
+	as well as assigning the path of the downloads folder for the current user
 	"""
 	_instance = None
 	downloads_path = None
