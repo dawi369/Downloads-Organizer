@@ -83,7 +83,7 @@ class FileHandler:
 			if (core_dir, "") not in file_metadata_list:
 				try:
 					os.mkdir(dir_path)
-					print("Directory created: {subdir_to_implement} in {subdir_path}")
+					print(f"Directory created: {core_dir} in {dir_path}")
 					try:
 						self.implement_subdirs(dir_path)
 					except OSError as e:
