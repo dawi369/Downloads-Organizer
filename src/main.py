@@ -10,12 +10,13 @@ from organizer import organize_files
 def main():
 	"""Setup"""
 
-	DownloadsFolder = DownloadsFolderClass()
+	df = DownloadsFolderClass()
+	fh = FileHandler()
 
-	FileHandler.gather_files(DownloadsFolder)
+	fh.gather_files(df)  # Files now represented in custom class
 
-
-
+	# FileHandler.make_missing_dirs(df)
+	fh.implement_subdirs(r"C:\Users\Hocke\Downloads\Media")
 
 
 if __name__ == "__main__":

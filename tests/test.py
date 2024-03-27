@@ -27,6 +27,17 @@ class TestAddFunction(unittest.TestCase):
 		metadata = FileHandler.get_file_metadata(file_path)
 		self.assertEqual(metadata.name, os.path.basename(__file__))
 
+	def test_check_for_directory(self):
+		DownloadsFolder = DownloadsFolderClass()
+		FileHandler.gather_files(DownloadsFolder)
+		my_dir = "To_Review"
+		my_file_type = ""
+
+		# Create a list of tuples containing the name and file type of each FileMetadata object
+		file_metadata_list = [(file.name, file.file_type) for file in DownloadsFolder.files]
+
+		# Check if a tuple containing the specific name and file type is in the list
+		self.assertIn((my_dir, my_file_type), file_metadata_list)
 
 
 # self.assertEqual()
