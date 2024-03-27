@@ -1,6 +1,6 @@
 import os
 import shutil
-from Classes import *
+from classes import *
 from file_classifier import classify_file
 from organizer import organize_files
 

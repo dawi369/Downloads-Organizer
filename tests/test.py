@@ -1,7 +1,7 @@
 import unittest
 
 # from ..src.main import *
-from ..src.Classes import *
+from ..src.classes import *
 
 
 # from ..src.file_classifier import *

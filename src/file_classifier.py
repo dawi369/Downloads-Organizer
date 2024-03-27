@@ -1,4 +1,4 @@
-from Classes import *
+from classes import *
 
 
 def classify_file(files) -> FileMetadata:

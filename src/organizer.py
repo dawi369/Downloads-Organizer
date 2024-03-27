@@ -1,4 +1,4 @@
-from Classes import *
+from classes import *
 
 
 def organize_files(classified_files):
