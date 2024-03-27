@@ -134,32 +134,4 @@ class FileHandler:
 			entry_metadata = FileHandler.get_file_metadata(entry_path)
 			main.add_file(entry_metadata)
 
-
 # C:\Users\Hocke\Downloads
-
-
-"""
-Downloads/
-    To_Review/
-    Programming/
-        Python/
-        Rust/
-        Go/
-        Mojo/
-        C/
-        C++/
-    Documents/
-        PDFs/
-        Word Documents/
-        Spreadsheets/
-    Media/
-        Images/
-        Videos/
-        Music/
-    Software/
-        Executables/
-        Installation Packages/
-    Archives/
-        ZIP/
-        RAR/
-"""
