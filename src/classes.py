@@ -74,6 +74,28 @@ class FileHandler:
 			"Archives": ["ZIP", "RAR"]
 		}
 
+	def make_missing_dirs(self, main: DownloadsFolderClass) -> None:
+		# Look through downloads and make the core dirs, when cycle over them and use impl subdir
+
+		file_metadata_list = [(file.name, file.file_type) for file in main.files]
+		for core_dir in self.core_dirs.keys():
+			dir_path = os.path.join(main.downloads_path, core_dir)
+			if (core_dir, "") not in file_metadata_list:
+				try:
+					os.mkdir(dir_path)
+					print("Directory created: {subdir_to_implement} in {subdir_path}")
+					try:
+						self.implement_subdirs(dir_path)
+					except OSError as e:
+						print(f"Error implementing sub directories for {dir_path}: {e}")
+				except OSError as e:
+					print(f"Error creating directory {dir_path}: {e}")
+			else:
+				try:
+					self.implement_subdirs(dir_path)
+				except OSError as e:
+					print(f"Error implementing sub directories for {dir_path}: {e}")
+
 	def implement_subdirs(self, path_to_core_dir: str) -> None:
 		for core_dir in self.core_dirs.keys():
 			if core_dir in path_to_core_dir and core_dir != "To_Review":
@@ -86,10 +108,10 @@ class FileHandler:
 	def impl_subdir_helper(self, core_dir, subdirs, path_to_core_dir) -> None:
 		for subdir_to_implement in self.core_dirs[core_dir]:
 			if subdir_to_implement not in subdirs:
+				subdir_path = os.path.join(path_to_core_dir, subdir_to_implement)
 				try:
-					subdir_path = os.path.join(path_to_core_dir, subdir_to_implement)
 					os.mkdir(subdir_path)
-					print(f"Directory created: {subdir_to_implement} in {subdir_path}")
+					print(f"Sub Directory created: {subdir_to_implement} in {subdir_path}")
 				except OSError as e:
 					print(f"Error creating directory {subdir_to_implement}: {e}")
 
@@ -111,17 +133,6 @@ class FileHandler:
 			entry_path = os.path.join(main.downloads_path, entry)
 			entry_metadata = FileHandler.get_file_metadata(entry_path)
 			main.add_file(entry_metadata)
-
-
-# @staticmethod
-# def make_missing_dirs(main: DownloadsFolderClass) -> None:
-#
-# 	file_metadata_list = [(file.name, file.file_type) for file in main.files]
-# 	needed_dirs_we_have: dict[str, list[str]] = {}
-# 	for entry in file_metadata_list:  # Go through every item in downloads
-# 		name = entry[0]
-# 		extension = entry[1]
-# 		if extension == "":  # If directory
 
 
 # C:\Users\Hocke\Downloads
