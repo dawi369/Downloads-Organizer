@@ -1,7 +1,6 @@
 import os
 import shutil
 from classes import *
-from file_classifier import classify_file
 from organizer import organize_files
 
 
@@ -12,9 +11,13 @@ def main():
 	"""Setup"""
 
 	DownloadsFolder = DownloadsFolderClass()
-	my_file = FileMetadata("text.txt", 1000, "21-03-24 11:11", "txt")
-	DownloadsFolder.add_file(my_file)
+
+	FileHandler.gather_files(DownloadsFolder)
+
 	DownloadsFolder.list_files()
+
+
+
 
 
 if __name__ == "__main__":

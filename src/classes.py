@@ -1,13 +1,17 @@
 import os
+import time
 from dataclasses import dataclass, field
+from pathlib import Path
 
 
 @dataclass
 class FileMetadata:
-	name: str  # include extension in name?
+	name: str
 	size_kb: int
-	creation_date: str  # maybe last edited
+	creation_date: str
+	last_edited: str
 	file_type: str
+	full_path: Path
 
 
 @dataclass
@@ -34,7 +38,8 @@ class DownloadsFolderClass:
 	def list_files(self) -> None:
 		"""Prints a summary of all files in the folder."""
 		for file in self.files:
-			print(f"{file.name}, {file.size_kb} kilobytes, Created on {file.creation_date}, Type: {file.file_type}")
+			print(
+				f"{file.name}, {file.size_kb} kilobytes, Created on {file.creation_date}, Last modified on {file.last_edited}, Type: {file.file_type}, Located at {file.full_path}")
 
 	def find_file(self, name: str) -> FileMetadata | None:
 		"""Finds and returns a file by name."""
@@ -42,3 +47,29 @@ class DownloadsFolderClass:
 			if file.name == name:
 				return file
 		return None
+
+
+class FileHandler:
+	@staticmethod
+	def get_file_metadata(file_path: str) -> FileMetadata:
+		stat_info = os.stat(file_path)
+		file_name = os.path.basename(file_path)
+		file_sizeKB = stat_info.st_size // 1024  # size in kilobytes
+		creation_date = time.ctime(stat_info.st_ctime)
+		modification_date = time.ctime(stat_info.st_mtime)
+		file_type = os.path.splitext(file_path)[1][1:]  # get file extension without the dot
+		full_path: Path = Path(file_path).resolve()
+
+		return FileMetadata(file_name, file_sizeKB, creation_date, modification_date, file_type, full_path)
+
+	@staticmethod
+	def gather_files(main: DownloadsFolderClass):
+
+		for entry in os.listdir(main.downloads_path):
+			entry_path = os.path.join(main.downloads_path, entry)
+			entry_metadata = FileHandler.get_file_metadata(entry_path)
+			main.add_file(entry_metadata)
+
+
+
+
