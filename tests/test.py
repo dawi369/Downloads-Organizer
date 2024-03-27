@@ -1,12 +1,7 @@
 import unittest
-import sys
-
-# Adjusting sys.path to include the directory where the modules are located.
-sys.path.insert(0, 'C:/Projects(Py)/downloads_organizer/src')
-
-from src.main import *
-from src.classes import *
-from src.organizer import *
+import os
+from pathlib import Path
+from src import *
 
 
 class TestAddFunction(unittest.TestCase):

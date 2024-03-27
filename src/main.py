@@ -1,7 +1,4 @@
-import os
-import shutil
-from classes import *
-from organizer import organize_files
+from src import DownloadsFolderClass, FileHandler
 
 
 # TODO check on every downloads folder update/1h time period
