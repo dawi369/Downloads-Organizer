@@ -3,18 +3,17 @@ import os
 import time
 from pathlib import Path
 from dl_folder import DownloadsFolderClass, FileMetadata
-from gui import GUI
+from organizer import JsonHelper
 
 
 class FileHandler:
 
-	def __init__(self, gui: GUI):
+	def __init__(self):
 		with open("../data/profiles.json", 'r') as f:
 			data = json.load(f)
 			for profile in data:
-				if profile["name"] == gui.active_profile:
+				if profile["name"] == JsonHelper.current_active_profile():
 					self.core_dirs: dict[str, list[str | None]] = profile["Downloads"]
-					print(self.core_dirs)
 
 	def make_missing_dirs(self, main: DownloadsFolderClass) -> None:
 		file_metadata_list = [(file.name, file.file_type) for file in main.files]
@@ -81,5 +80,3 @@ class FileHandler:
 			entry_metadata = FileHandler.get_file_metadata(entry_path)
 			if entry_metadata not in main.files:
 				main.add_file(entry_metadata)
-
-# C:\Users\Hocke\Downloads

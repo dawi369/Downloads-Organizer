@@ -1,20 +1,33 @@
+import time
 from dl_folder import DownloadsFolderClass
 from file_handler import FileHandler
 from gui import GUI
-from organizer import JsonHelper
+from state_handler import StateHandler
 
 
 def main():
 	"""Setup"""
-	gui = GUI()
 	df = DownloadsFolderClass()
-	fh = FileHandler(gui)
+	fh = FileHandler()
 	fh.gather_files(df)
+	state = StateHandler()
+	GUI.print_art_with_act_dir()
+
+	try:
+		while True:
+			time.sleep(0.5)
+			break
+			# Your application logic here
 
 
-	fh.make_missing_dirs(df)
-	fh.update_files(df)
 
+
+
+
+
+	except KeyboardInterrupt:
+		print("\nExiting application... Goodbye!")
+		exit(0)
 
 
 if __name__ == "__main__":

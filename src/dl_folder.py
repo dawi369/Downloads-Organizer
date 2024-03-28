@@ -13,10 +13,12 @@ class FileMetadata:
 	full_path: Path
 
 
+# TODO function to run a check for every subdirectory, return the metadata of files in the wrong place
+
 @dataclass
 class DownloadsFolderClass:
 	"""
-	This is a Singleton class, the custom __new__ method ensures there will only ever be one instance of this class,
+	This is a Singleton class. The custom __new__ method ensures there will only ever be one instance of this class,
 	as well as assigning the path of the downloads folder for the current user
 	"""
 	_instance = None
@@ -57,5 +59,3 @@ class DownloadsFolderClass:
 			if file.name == name:
 				return file
 		return None
-
-# TODO function to run a check for every subdirectory, return the metadata of files in the wrong place

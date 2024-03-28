@@ -1,32 +1,11 @@
 import time
-import inquirer
 from organizer import JsonHelper
 
 
 class GUI:
-	def __init__(self):
-		GUI.print_ascii_art()
-
-		self.active_profile = JsonHelper.current_active_profile()
-
-		print(f"Active directory profile: {self.active_profile}\n")
-
-		questions = [
-			inquirer.List('home_command',
-			              message="Would you like to: ",
-			              choices=['View hierarchy of active directory profile',
-			                       'Change directory profile',
-			                       'Set up active profile directories',
-			                       'Set up and organize files for active profile',
-			                       'Settings'],
-			              ),
-		]
-		self.home_screen_answer = inquirer.prompt(questions)
-
-		#print(self.home_screen_answer)
 
 	@staticmethod
-	def print_ascii_art() -> None:
+	def print_art_with_act_dir() -> None:
 		art1 = r"""
  ________  ________  ___       __   ________   ___       ________  ________  ________  ________
 |\   ___ \|\   __  \|\  \     |\  \|\   ___  \|\  \     |\   __  \|\   __  \|\   ___ \|\   ____\
@@ -66,4 +45,4 @@ class GUI:
 		print(name)
 		time.sleep(0.5)
 		print(about)
-		time.sleep(0.2)
+		print(f"\nActive directory profile: {JsonHelper.current_active_profile()}")
