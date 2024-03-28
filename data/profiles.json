@@ -33,12 +33,10 @@
         }
     },
     {
-        "name": "default2",
+        "name": "my own",
         "current": "false",
         "Downloads": {
-            "To_Review": {
-                "CHANGED": {}
-            },
+            "To_Review": {},
             "Programming": {
                 "Python": {},
                 "Rust": {},

@@ -7,23 +7,21 @@ class GUI:
 	def __init__(self):
 		GUI.print_ascii_art()
 
-		JsonHelper.set_only_default_profile_to_current()
+		print(f"Active directory profile: {JsonHelper.current_active_profile()}\n")
 
+		questions = [
+			inquirer.List('home_command',
+			              message="Would you like to: ",
+			              choices=['View hierarchy of active directory profile',
+			                       'Change directory profile',
+			                       'Set up active profile directories',
+			                       'Set up and organize files for active profile',
+			                       'Settings'],
+			              ),
+		]
+		self.home_screen_answer = inquirer.prompt(questions)
 
-
-
-
-
-
-		# questions = [
-		# 	inquirer.List('size',
-		# 	              message="What size do you need?",
-		# 	              choices=['Jumbo', 'Large', 'Standard', 'Medium', 'Small', 'Micro'],
-		# 	              ),
-		# ]
-		# answers = inquirer.prompt(questions)
-		#
-		# print(answers)
+		print(self.home_screen_answer)
 
 	@staticmethod
 	def print_ascii_art() -> None:
@@ -51,14 +49,19 @@ class GUI:
   |_) \/   | \ _     o  _|   |_  __    o __ 
   |_) /    |_/(_|\_/ | (_|   |__ | \^/ | | |
 		"""
-		about = r"""
-  This app blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah
-  blah blah blah blah blah blah blah blah blah blah blah 
-		"""
+		about = (
+			"Here, you can edit how you would like your downloads folder customized (Option 1). "
+			"To mkdir the directories currently set in the active profile, use (Option 2). "
+			"If you want option 2 and you downloads folder organized as specified in the profile, use (Option 3). "
+			"Or more indepth settings, use (Option 4).\n"
+			"Thank you for using my app! I highly appreciate any github issues or pull request!"
+		)
 
 		print(art1)
 		time.sleep(0.5)
 		print(art2)
 		time.sleep(0.5)
-		print(about)
 		print(name)
+		time.sleep(0.5)
+		print(about)
+		time.sleep(0.2)
