@@ -9,11 +9,8 @@ from organizer import JsonHelper
 class FileHandler:
 
 	def __init__(self):
-		with open("../data/profiles.json", 'r') as f:
-			data = json.load(f)
-			for profile in data:
-				if profile["name"] == JsonHelper.current_active_profile():
-					self.core_dirs: dict[str, list[str | None]] = profile["Downloads"]
+		self.core_dirs: dict[str, list[str | None]] = {}
+		self.update_core_dirs_for_active_profile()
 
 	def make_missing_dirs(self, main: DownloadsFolderClass) -> None:
 		file_metadata_list = [(file.name, file.file_type) for file in main.files]
@@ -34,6 +31,13 @@ class FileHandler:
 					self.implement_subdirs(dir_path)
 				except OSError as e:
 					print(f"Error implementing sub directories for {dir_path}: {e}")
+
+	def update_core_dirs_for_active_profile(self):
+		with open("../data/profiles.json", 'r') as f:
+			data = json.load(f)
+			for profile in data:
+				if profile["name"] == JsonHelper.current_active_profile():
+					self.core_dirs: dict[str, list[str | None]] = profile["Downloads"]
 
 	def implement_subdirs(self, path_to_core_dir: str) -> None:
 		for core_dir in self.core_dirs.keys():

@@ -31,10 +31,11 @@ class GUI:
   |_) /    |_/(_|\_/ | (_|   |__ | \^/ | | |
 		"""
 		about = (
-			"Here, you can edit how you would like your downloads folder customized (Option 1). "
-			"To mkdir the directories currently set in the active profile, use (Option 2). "
-			"If you want option 2 and you downloads folder organized as specified in the profile, use (Option 3). "
-			"Or more indepth settings, use (Option 4).\n"
+			"(Option 1). "
+			"(Option 2). "
+			"(Option 3). "
+			"(Option 4). "
+			"Or more indepth settings, use (Option 5).\n"
 			"Thank you for using my app! I highly appreciate any github issues or pull request!"
 		)
 
@@ -45,4 +46,4 @@ class GUI:
 		print(name)
 		time.sleep(0.5)
 		print(about)
-		print(f"\nActive directory profile: {JsonHelper.current_active_profile()}")
+		print(f"\nActive directory profile: {JsonHelper.current_active_profile()}\n")

@@ -7,17 +7,17 @@ from state_handler import StateHandler
 
 def main():
 	"""Setup"""
-	df = DownloadsFolderClass()
-	fh = FileHandler()
-	fh.gather_files(df)
 	state = StateHandler()
 	GUI.print_art_with_act_dir()
 
+
 	try:
 		while True:
-			time.sleep(0.5)
+			state.home_screen()
+
+
+
 			break
-			# Your application logic here
 
 
 
