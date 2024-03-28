@@ -2,12 +2,11 @@ import inquirer
 from dl_folder import DownloadsFolderClass
 from file_handler import FileHandler
 from organizer import JsonHelper
-from gui import GUI
 
 
 class StateHandler:
-	def __init__(self):
 
+	def __init__(self):
 		self.home_questions = [
 			inquirer.List('home_command',
 			              message="-> Would you like to",
