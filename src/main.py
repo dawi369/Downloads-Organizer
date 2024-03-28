@@ -1,17 +1,20 @@
 from dl_folder import DownloadsFolderClass
 from file_handler import FileHandler
 from gui import GUI
+from organizer import JsonHelper
 
 
 def main():
 	"""Setup"""
-	df = DownloadsFolderClass()
-	fh = FileHandler()
-	fh.gather_files(df)
 	gui = GUI()
+	df = DownloadsFolderClass()
+	fh = FileHandler(gui)
+	fh.gather_files(df)
+
 
 	fh.make_missing_dirs(df)
 	fh.update_files(df)
+
 
 
 if __name__ == "__main__":

@@ -7,7 +7,9 @@ class GUI:
 	def __init__(self):
 		GUI.print_ascii_art()
 
-		print(f"Active directory profile: {JsonHelper.current_active_profile()}\n")
+		self.active_profile = JsonHelper.current_active_profile()
+
+		print(f"Active directory profile: {self.active_profile}\n")
 
 		questions = [
 			inquirer.List('home_command',
@@ -21,7 +23,7 @@ class GUI:
 		]
 		self.home_screen_answer = inquirer.prompt(questions)
 
-		print(self.home_screen_answer)
+		#print(self.home_screen_answer)
 
 	@staticmethod
 	def print_ascii_art() -> None:

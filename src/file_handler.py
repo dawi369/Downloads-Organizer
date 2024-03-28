@@ -1,23 +1,22 @@
+import json
 import os
 import time
 from pathlib import Path
 from dl_folder import DownloadsFolderClass, FileMetadata
+from gui import GUI
+
 
 class FileHandler:
 
-	def __init__(self):
-		self.core_dirs: dict[str, list[str]] = {
-			"To_Review": [""],
-			"Programming": ["Python", "Rust", "Go", "Mojo", "C", "C++"],
-			"Documents": ["PDFs", "Word_Documents", "Spreadsheets"],
-			"Media": ["Images", "Videos", "Music"],
-			"Software": ["Executables", "Installation_Packages"],
-			"Archives": ["ZIP", "RAR"]
-		}
+	def __init__(self, gui: GUI):
+		with open("../data/profiles.json", 'r') as f:
+			data = json.load(f)
+			for profile in data:
+				if profile["name"] == gui.active_profile:
+					self.core_dirs: dict[str, list[str | None]] = profile["Downloads"]
+					print(self.core_dirs)
 
 	def make_missing_dirs(self, main: DownloadsFolderClass) -> None:
-		# Look through downloads and make the core dirs, when cycle over them and use impl subdir
-
 		file_metadata_list = [(file.name, file.file_type) for file in main.files]
 		for core_dir in self.core_dirs.keys():
 			dir_path = os.path.join(main.downloads_path, core_dir)

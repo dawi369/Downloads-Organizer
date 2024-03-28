@@ -3,66 +3,66 @@
         "name": "default",
         "current": "true",
         "Downloads": {
-            "To_Review": {},
-            "Programming": {
-                "Python": {},
-                "Rust": {},
-                "Go": {},
-                "Mojo": {},
-                "C": {},
-                "C++": {}
-            },
-            "Documents": {
-                "PDFs": {},
-                "Word Documents": {},
-                "Spreadsheets": {}
-            },
-            "Media": {
-                "Images": {},
-                "Videos": {},
-                "Music": {}
-            },
-            "Software": {
-                "Executables": {},
-                "Installation Packages": {}
-            },
-            "Archives": {
-                "ZIP": {},
-                "RAR": {}
-            }
+            "To Review": [],
+            "Programming": [
+                "Python",
+                "Rust",
+                "Go",
+                "Mojo",
+                "C",
+                "C++"
+            ],
+            "Documents": [
+                "PDFs",
+                "Word Documents",
+                "Spreadsheets"
+            ],
+            "Media": [
+                "Images",
+                "Videos",
+                "Music"
+            ],
+            "Software": [
+                "Executables",
+                "Installation Packages"
+            ],
+            "Archives": [
+                "ZIP",
+                "RAR"
+            ]
         }
     },
     {
-        "name": "my own",
+        "name": "default2",
         "current": "false",
         "Downloads": {
-            "To_Review": {},
-            "Programming": {
-                "Python": {},
-                "Rust": {},
-                "Go": {},
-                "Mojo": {},
-                "C": {},
-                "C++": {}
-            },
-            "Documents": {
-                "PDFs": {},
-                "Word Documents": {},
-                "Spreadsheets": {}
-            },
-            "Media": {
-                "Images": {},
-                "Videos": {},
-                "Music": {}
-            },
-            "Software": {
-                "Executables": {},
-                "Installation Packages": {}
-            },
-            "Archives": {
-                "ZIP": {},
-                "RAR": {}
-            }
+            "To Review": [],
+            "Programming": [
+                "Python",
+                "Rust",
+                "Go",
+                "Mojo",
+                "C",
+                "C++"
+            ],
+            "Documents": [
+                "PDFs",
+                "Word Documents",
+                "Spreadsheets"
+            ],
+            "Media": [
+                "Images",
+                "Videos",
+                "Music"
+            ],
+            "Software": [
+                "Executables",
+                "Installation Packages"
+            ],
+            "Archives": [
+                "ZIP",
+                "RAR"
+            ]
         }
     }
 ]
