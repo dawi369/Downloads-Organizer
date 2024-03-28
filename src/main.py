@@ -1,6 +1,3 @@
-import time
-from dl_folder import DownloadsFolderClass
-from file_handler import FileHandler
 from gui import GUI
 from state_handler import StateHandler
 
