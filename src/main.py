@@ -1,7 +1,6 @@
-from src import DownloadsFolderClass, FileHandler
-
-
-# TODO check on every downloads folder update/1h time period
+from dl_folder import DownloadsFolderClass
+from file_handler import FileHandler
+from gui import GUI
 
 
 def main():
@@ -9,9 +8,10 @@ def main():
 	df = DownloadsFolderClass()
 	fh = FileHandler()
 	fh.gather_files(df)
-
+	gui = GUI()
 
 	fh.make_missing_dirs(df)
+	fh.update_files(df)
 
 
 if __name__ == "__main__":
@@ -20,7 +20,6 @@ if __name__ == "__main__":
 """
 Downloads/
     To_Review/
-        Misc/
     Programming/
         Python/
         Rust/

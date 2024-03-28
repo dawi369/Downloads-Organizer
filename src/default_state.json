@@ -1,0 +1,35 @@
+[
+    {
+        "name": "default",
+        "current": "true",
+        "Downloads": {
+            "To_Review": {},
+            "Programming": {
+                "Python": {},
+                "Rust": {},
+                "Go": {},
+                "Mojo": {},
+                "C": {},
+                "C++": {}
+            },
+            "Documents": {
+                "PDFs": {},
+                "Word Documents": {},
+                "Spreadsheets": {}
+            },
+            "Media": {
+                "Images": {},
+                "Videos": {},
+                "Music": {}
+            },
+            "Software": {
+                "Executables": {},
+                "Installation Packages": {}
+            },
+            "Archives": {
+                "ZIP": {},
+                "RAR": {}
+            }
+        }
+    }
+]

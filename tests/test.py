@@ -1,7 +1,11 @@
 import unittest
 import os
+import sys
+
+sys.path.append(r'C:\Projects(Py)\downloads_organizer\src')
 from pathlib import Path
-from src import *
+from src.dl_folder import DownloadsFolderClass, FileMetadata
+from src.file_handler import FileHandler
 
 
 class TestAddFunction(unittest.TestCase):
