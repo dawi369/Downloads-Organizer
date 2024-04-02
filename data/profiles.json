@@ -5,11 +5,7 @@
         "Downloads": {
             "To Review": {},
             "Programming": {
-                "Python": {
-                    "Projects": {},
-                    "Git clones": {},
-                    "Random": {}
-                },
+                "Python": {},
                 "Rust": {},
                 "Go": {},
                 "Mojo": {},

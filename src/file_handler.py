@@ -21,34 +21,27 @@ class FileHandler:
 					os.mkdir(dir_path)
 					print(f"Directory created: {core_dir} in {dir_path}")
 					try:
-						self.implement_subdirs(dir_path)
+						self.implement_subdirs_of_cores(dir_path)
 					except OSError as e:
 						print(f"Error implementing sub directories for {dir_path}: {e}")
 				except OSError as e:
 					print(f"Error creating directory {dir_path}: {e}")
 			else:
 				try:
-					self.implement_subdirs(dir_path)
+					self.implement_subdirs_of_cores(dir_path)
 				except OSError as e:
 					print(f"Error implementing sub directories for {dir_path}: {e}")
 
-	def update_core_dirs_for_active_profile(self):
-		with open("../data/profiles.json", 'r') as f:
-			data = json.load(f)
-			for profile in data:
-				if profile["name"] == JsonHelper.current_active_profile():
-					self.core_dirs: dict[str, list[str | None]] = profile["Downloads"]
-
-	def implement_subdirs(self, path_to_core_dir: str) -> None:
+	def implement_subdirs_of_cores(self, path_to_core_dir: str) -> None:
 		for core_dir in self.core_dirs.keys():
-			if core_dir in path_to_core_dir and core_dir != "To_Review":
+			if core_dir in path_to_core_dir:
 				items = os.listdir(path_to_core_dir)
 				subdirs = [item for item in items if os.path.isdir(os.path.join(path_to_core_dir, item))]
-				self.impl_subdir_helper(core_dir, subdirs, path_to_core_dir)
+				self.impl_subdir_of_cores_helper(core_dir, subdirs, path_to_core_dir)
 
 				break
 
-	def impl_subdir_helper(self, core_dir, subdirs, path_to_core_dir) -> None:
+	def impl_subdir_of_cores_helper(self, core_dir, subdirs, path_to_core_dir) -> None:
 		for subdir_to_implement in self.core_dirs[core_dir]:
 			if subdir_to_implement not in subdirs:
 				subdir_path = os.path.join(path_to_core_dir, subdir_to_implement)
@@ -57,6 +50,13 @@ class FileHandler:
 					print(f"Sub Directory created: {subdir_to_implement} in {subdir_path}")
 				except OSError as e:
 					print(f"Error creating directory {subdir_to_implement}: {e}")
+
+	def update_core_dirs_for_active_profile(self):
+		with open("../data/profiles.json", 'r') as f:
+			data = json.load(f)
+			for profile in data:
+				if profile["name"] == JsonHelper.current_active_profile():
+					self.core_dirs: dict[str, list[str | None]] = profile["Downloads"]
 
 	@staticmethod
 	def get_file_metadata(file_path: str) -> FileMetadata:
@@ -71,14 +71,14 @@ class FileHandler:
 		return FileMetadata(file_name, file_sizeKB, creation_date, modification_date, file_type, full_path)
 
 	@staticmethod
-	def gather_files(main: DownloadsFolderClass) -> None:
+	def gather_files_from_dl_folder(main: DownloadsFolderClass) -> None:
 		for entry in os.listdir(main.downloads_path):
 			entry_path = os.path.join(main.downloads_path, entry)
 			entry_metadata = FileHandler.get_file_metadata(entry_path)
 			main.add_file(entry_metadata)
 
 	@staticmethod
-	def update_files(main: DownloadsFolderClass) -> None:
+	def update_files_in_dl_folder(main: DownloadsFolderClass) -> None:
 		for entry in os.listdir(main.downloads_path):
 			entry_path = os.path.join(main.downloads_path, entry)
 			entry_metadata = FileHandler.get_file_metadata(entry_path)

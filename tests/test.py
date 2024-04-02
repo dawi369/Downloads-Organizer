@@ -28,7 +28,7 @@ class TestAddFunction(unittest.TestCase):
 
 	def test_check_for_directory(self):
 		DownloadsFolder = DownloadsFolderClass()
-		FileHandler.gather_files(DownloadsFolder)
+		FileHandler.gather_files_from_dl_folder(DownloadsFolder)
 		my_dir = "To_Review"
 		my_file_type = ""
 

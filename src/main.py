@@ -2,18 +2,15 @@ from gui import GUI
 from state_handler import StateHandler
 
 
+# cannot go deeper than 1 subdir from cores
 def main():
 	"""Setup"""
-	state = StateHandler()
+	state: StateHandler = StateHandler()
 	GUI.print_art_with_act_dir()
 
 	try:
-		while True:
-			state.home_screen()
 
-			break
-
-
+		state.home_screen()
 
 	except KeyboardInterrupt:
 		print("\nExiting application... Goodbye!")
@@ -22,29 +19,3 @@ def main():
 
 if __name__ == "__main__":
 	main()
-
-"""
-Downloads/
-    To_Review/
-    Programming/
-        Python/
-        Rust/
-        Go/
-        Mojo/
-        C/
-        C++/
-    Documents/
-        PDFs/
-        Word Documents/
-        Spreadsheets/
-    Media/
-        Images/
-        Videos/
-        Music/
-    Software/
-        Executables/
-        Installation Packages/
-    Archives/
-        ZIP/
-        RAR/
-"""

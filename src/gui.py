@@ -1,5 +1,4 @@
 import time
-from organizer import JsonHelper
 
 
 class GUI:
@@ -30,14 +29,9 @@ class GUI:
   |_) \/   | \ _     o  _|   |_  __    o __ 
   |_) /    |_/(_|\_/ | (_|   |__ | \^/ | | |
 		"""
-		about = (
-			"(Option 1). "
-			"(Option 2). "
-			"(Option 3). "
-			"(Option 4). "
-			"Or more indepth settings, use (Option 5).\n"
-			"Thank you for using my app! I highly appreciate any github issues or pull request!"
-		)
+		about = ("TODO"
+		         "TODO"
+		         "TODO")
 
 		print(art1)
 		time.sleep(0.5)
@@ -45,5 +39,5 @@ class GUI:
 		time.sleep(0.5)
 		print(name)
 		time.sleep(0.5)
+		print()
 		print(about)
-		print(f"\nActive directory profile: {JsonHelper.current_active_profile()}\n")
