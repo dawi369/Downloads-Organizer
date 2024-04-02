@@ -101,9 +101,9 @@ class StateHandler:
 
 	# 4
 	def set_up_directories_according_to_active(self) -> None:
+		os.system('cls' if os.name == 'nt' else 'clear')
 		self.fh.make_missing_dirs(self.df)
 		self.fh.update_files_in_dl_folder(self.df)
-		os.system('cls' if os.name == 'nt' else 'clear')
 		print("Directories successfully created!")
 		self.home_screen()
 
