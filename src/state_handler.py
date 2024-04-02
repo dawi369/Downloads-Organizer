@@ -1,4 +1,6 @@
 import inquirer
+import os
+import json
 from dl_folder import DownloadsFolderClass
 from file_handler import FileHandler
 from organizer import JsonHelper
@@ -44,14 +46,52 @@ class StateHandler:
 				print("\nExiting application... Goodbye!")
 				exit(0)
 
-	def view_hierarchy_of_ADP(self):
-		print(f"Temp: {self.active_profile}")
+	# 1
+	def view_hierarchy_of_ADP(self) -> None:
+		# Load the profiles from the JSON file
+		with open("../data/profiles.json", 'r') as f:
+			profiles = json.load(f)
 
-	def edit_directory_profile(self):
+		# Find the profile with the given name
+		for profile in profiles:
+			if profile['name'] == self.active_profile:
+				downloads = profile['Downloads']
+				break
+		else:
+			print(f"No profile found with the name {self.active_profile}")
+			return
+
+		# Helper for 1
+		def print_directory(name, directory, indent=0):
+			match indent:
+				case 0:
+					print('  ' * indent + name + '/')
+				case _ if indent >= 1:
+					print('|' + "--"* indent + name + '/')
+
+
+
+
+
+
+			if isinstance(directory, list):
+				for item in directory:
+					print('|' + "-- "*(indent + 1) + item)
+			else:
+				for subdirectory in directory:
+					print_directory(subdirectory, directory[subdirectory], indent + 1)
+
+		# Print the Downloads directory
+		print_directory('Downloads', downloads)
+
+	# 2
+	def edit_directory_profile(self) -> None:
 		pass
 
-	def set_up_directories_according_to_active(self):
+	# 3
+	def set_up_directories_according_to_active(self) -> None:
 		self.fh.make_missing_dirs(self.df)
 		self.fh.update_files(self.df)
+		#os.system('cls' if os.name == 'nt' else 'clear')
 		print("Directories successfully created!")
 		self.home_screen()

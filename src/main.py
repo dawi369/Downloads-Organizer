@@ -7,18 +7,11 @@ def main():
 	state = StateHandler()
 	GUI.print_art_with_act_dir()
 
-
 	try:
 		while True:
 			state.home_screen()
 
-
-
 			break
-
-
-
-
 
 
 
